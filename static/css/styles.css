@@ -1,0 +1,16 @@
+html { scroll-behavior: smooth; }
+body { background: #f2f5fa; color: #263248; min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1; }
+.hero { background: linear-gradient(120deg, #e3eeff, #ffffff); }
+.hero h1 { font-weight: 750; }
+.profile-image { max-width: 180px; }
+.content-section { background: #fff; padding: 1.8rem; margin-bottom: 1.3rem; border-radius: 1rem; box-shadow: 0 5px 20px #20304a0c; scroll-margin-top: 1.5rem; }
+.content-section h2 { color: #1959aa; font-size: 1.45rem; font-weight: 700; margin-bottom: 1rem; }
+.nav-link:hover { color: #fff; }
+@media (max-width: 576px) { .content-section { padding: 1.2rem; } .hero { text-align: center; } }
+
+.resume-sections { background: #f1f5fb; }
+.content-section { scroll-margin-top: 1.5rem; }
+
+.resume-sections { background: transparent; padding-left: 0 !important; padding-right: 0 !important; }
+.resume-sections .d-flex { justify-content: flex-start !important; }

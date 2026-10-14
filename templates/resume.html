@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav class="resume-sections mb-4 p-3 rounded-4" aria-label="Розділи резюме">
+  <div class="d-flex flex-wrap justify-content-start gap-2">
+    <a class="btn btn-outline-primary" href="#about">Про себе</a>
+    <a class="btn btn-outline-primary" href="#education">Освіта</a>
+    <a class="btn btn-outline-primary" href="#skills">Навички</a>
+    <a class="btn btn-outline-primary" href="#technologies">Технології</a>
+    <a class="btn btn-outline-primary" href="#projects">Проєкти</a>
+  </div>
+</nav>
+<header class="hero p-4 p-md-5 mb-4 rounded-4 shadow-sm">
+  <div class="row align-items-center g-4">
+    <div class="col-md-3 text-center"><img src="{{ url_for('static', filename='images/profile.svg') }}" alt="Ілюстрація програміста" class="img-fluid profile-image"></div>
+    <div class="col-md-9"><p class="text-primary fw-semibold mb-2">Резюме / Портфоліо</p><h1>Денис Гуменюк</h1><p class="lead mb-0">Студент спеціальності «Інженерія програмного забезпечення»</p></div>
+  </div>
+</header>
+
+<section id="about" class="content-section"><h2>Про себе</h2><p>Цікавлюся програмуванням, створенням вебзастосунків та розробкою програмного забезпечення. Постійно вдосконалюю практичні навички й вивчаю нові технології.</p></section>
+<section id="education" class="content-section"><h2>Освіта</h2><p>Карпатський національний університет імені Василя Стефаника. Напрям підготовки — інженерія програмного забезпечення.</p></section>
+<section id="skills" class="content-section"><h2>Навички</h2><ul><li>Розробка та налагодження програм</li><li>Робота з базами даних</li><li>Створення вебсторінок</li><li>Командна робота та Git</li></ul></section>
+<section id="technologies" class="content-section"><h2>Технології</h2><div class="d-flex flex-wrap gap-2">{% for tech in ['Python', 'Flask', 'Java', 'PHP', 'HTML', 'CSS', 'Bootstrap', 'SQL', 'Git'] %}<span class="badge rounded-pill text-bg-primary p-2">{{ tech }}</span>{% endfor %}</div></section>
+<section id="projects" class="content-section"><h2>Проєкти та досвід</h2><p>Навчальні проєкти з веброзробки, обробки даних та створення програм із графічним інтерфейсом. Практикую розробку, тестування й підтримку програмного коду.</p></section>
+{% endblock %}
