@@ -1,0 +1,4 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="mb-4">Каталог товарів</h1><div class="row g-3">{% for product in products %}<div class="col-md-4"><article class="content-section h-100"><h2>{{ product.name }}</h2><p>{{ product.content }}</p><p class="fw-bold">{{ product.price }} $</p><a class="btn btn-primary" href="{{ url_for('products.product_detail', product_id=product.id) }}">Детальніше</a></article></div>{% endfor %}</div>
+{% endblock %}
