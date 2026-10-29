@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="auth-card mx-auto p-4 p-md-5 rounded-4 shadow-sm bg-white">
+<h1 class="h3 mb-3">Вхід до профілю</h1><p class="text-muted">Введіть логін та пароль</p>
+<form method="post" action="{{ url_for('users.login') }}">
+<label for="username" class="form-label">Ім’я користувача</label><input class="form-control mb-3" id="username" name="username" autocomplete="username" required>
+<label for="password" class="form-label">Пароль</label><input class="form-control mb-4" type="password" id="password" name="password" autocomplete="current-password" required>
+<button class="btn btn-primary w-100" type="submit">Увійти</button></form>
+</section>{% endblock %}

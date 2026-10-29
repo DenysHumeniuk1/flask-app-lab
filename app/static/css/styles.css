@@ -17,3 +17,12 @@ main { flex: 1; }
 
 .user-menu a { display:block; padding:.65rem .8rem; margin:.35rem 0; background:#eaf2ff; border-radius:.5rem; text-decoration:none; }
 .user-menu a:hover { background:#d7e8ff; }
+
+/* Лабораторна 4 */
+.auth-card {max-width:480px;}
+.profile-theme {background:#edf3ff;color:#1c2a44;transition:background .2s,color .2s;}
+.profile-panel {background:#fff;color:#263248;border:1px solid #dce4f0;padding:1.5rem;border-radius:1rem;}
+.profile-theme.theme-dark {background:#141d2b;color:#f4f6fb;}
+.theme-dark .profile-panel {background:#243247;color:#f4f6fb;border-color:#41536b;}
+.theme-dark .profile-panel .form-label {color:#f4f6fb;}
+.theme-dark .profile-panel .table {--bs-table-bg:#243247;--bs-table-color:#f4f6fb;--bs-table-striped-bg:#31445c;--bs-table-striped-color:#fff;--bs-table-border-color:#50617a;}
