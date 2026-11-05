@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import render_field %}
+{% block content %}
+<h1 class="mb-4">{{ heading }}</h1>
+<section class="content-section">
+<form method="post" enctype="multipart/form-data">
+  {{ form.hidden_tag() }}
+  {{ render_field(form.name) }}
+  {{ render_field(form.content, rows=5, cols=40) }}
+  {{ render_field(form.price) }}
+  {{ render_field(form.category) }}
+  {{ render_field(form.quantity) }}
+  {% if product and product.image %}<p>Поточне зображення:</p><img src="{{ url_for('products.static', filename='uploads/' ~ product.image) }}" alt="Поточне зображення" style="max-width:180px">{% endif %}
+  {{ render_field(form.image) }}
+  {{ form.submit(class="btn btn-primary") }}
+  <a class="btn btn-outline-secondary" href="{{ url_for('products.product_list') }}">Скасувати</a>
+</form>
+</section>
+{% endblock %}

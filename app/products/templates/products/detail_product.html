@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<article class="content-section">
+<h1>{{ product.name }}</h1>
+{% if product.image %}<img src="{{ url_for('products.static', filename='uploads/' ~ product.image) }}" alt="{{ product.name }}" class="img-fluid mb-3" style="max-width:400px">{% else %}<p class="text-muted">Зображення відсутнє.</p>{% endif %}
+<p>{{ product.content }}</p><p>Категорія: {{ product.category }}</p>
+<p>Ціна: {{ product.price }} грн</p><p>Кількість: {{ product.quantity }}</p><p>Дата створення: {{ product.created_at }}</p>
+<a class="btn btn-primary" href="{{ url_for('products.product_edit', product_id=product.id) }}">Редагувати</a>
+<form method="post" action="{{ url_for('products.product_delete', product_id=product.id) }}" class="d-inline" onsubmit="return confirm('Видалити цей товар?')">
+{{ delete_form.hidden_tag() }}
+<button class="btn btn-danger" type="submit">Видалити</button>
+</form>
+<a class="btn btn-outline-secondary" href="{{ url_for('products.product_list') }}">До каталогу</a>
+</article>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="mb-4">Контакти</h1>
+<section class="content-section"><h2>Зв'язатися зі мною</h2><p>Заповніть форму нижче. Це демонстраційна форма: повідомлення не надсилається.</p>
+{% if submitted %}<div class="alert alert-success" role="status">Форму заповнено. Це демонстрація, повідомлення не було відправлено.</div>{% endif %}
+<form method="post" action="{{ url_for('contacts') }}">
+  <div class="mb-3"><label for="name" class="form-label">Ім'я</label><input class="form-control" id="name" name="name" required maxlength="100"></div>
+  <div class="mb-3"><label for="email" class="form-label">Email</label><input type="email" class="form-control" id="email" name="email" required maxlength="254"></div>
+  <div class="mb-3"><label for="message" class="form-label">Повідомлення</label><textarea class="form-control" id="message" name="message" rows="5" required maxlength="2000"></textarea></div>
+  <button class="btn btn-primary" type="submit">Надіслати (демо)</button>
+</form></section>
+{% endblock %}

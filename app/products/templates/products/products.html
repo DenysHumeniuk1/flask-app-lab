@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+<h1>Каталог товарів</h1><a class="btn btn-primary" href="{{ url_for('products.product_add') }}">Додати товар</a>
+</div>
+<div class="row g-3">
+{% for product in products %}
+<div class="col-md-4"><article class="content-section h-100">
+{% if product.image %}<img src="{{ url_for('products.static', filename='uploads/' ~ product.image) }}" alt="{{ product.name }}" class="img-fluid mb-3" style="max-height:180px">{% endif %}
+<h2>{{ product.name }}</h2><p>{{ product.content }}</p>
+<p>Категорія: {{ product.category }}</p><p>Ціна: {{ product.price }} грн</p><p>Кількість: {{ product.quantity }}</p>
+<p class="small text-muted">Додано: {{ product.created_at }}</p>
+<a class="btn btn-primary" href="{{ url_for('products.product_detail', product_id=product.id) }}">Детальніше</a>
+</article></div>
+{% else %}<p>Товарів поки немає.</p>{% endfor %}
+</div>
+{% endblock %}
