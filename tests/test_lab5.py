@@ -1,13 +1,14 @@
 import io
 import os
 import unittest
-from app import app
+from app import create_app
 from app.products.views import products_table
 
 class Lab5Tests(unittest.TestCase):
     def setUp(self):
-        app.config.update(TESTING=True, WTF_CSRF_ENABLED=False)
-        self.client = app.test_client()
+        self.app = create_app('testing')
+        self.app.config.update(TESTING=True, WTF_CSRF_ENABLED=False)
+        self.client = self.app.test_client()
         self.original_products = products_table.all()
         products_table.truncate()
 

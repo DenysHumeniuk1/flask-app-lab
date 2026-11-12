@@ -1,10 +1,10 @@
 import unittest
-from app import app
+from app import create_app
 
 class Lab4Tests(unittest.TestCase):
     def setUp(self):
-        app.config.update(TESTING=True)
-        self.client = app.test_client()
+        self.app = create_app('testing')
+        self.client = self.app.test_client()
 
     def login(self):
         return self.client.post('/users/login', data={'username':'student','password':'lab4pass'}, follow_redirects=True)

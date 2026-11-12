@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block extra_css %}<link rel="stylesheet" href="{{ url_for('posts.static', filename='css/posts.css') }}">{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4"><h1>Публікації</h1><a class="btn btn-primary" href="{{ url_for('posts.create_post') }}">Add Post</a></div>
+<div class="row g-4">
+{% for post in posts %}
+<div class="col-md-6 col-lg-4"><article class="card h-100 shadow-sm post-card">
+<img src="{{ url_for('posts.static', filename='img/default.jpg') }}" class="card-img-top post-image" alt="Зображення поста">
+<div class="card-body"><span class="badge bg-secondary">{{ post.category }}</span><h2 class="h5 mt-2">{{ post.title }}</h2>
+<p>{{ post.content[:100] }}{% if post.content|length > 100 %}...{% endif %}</p>
+<p class="small text-muted">{{ post.posted.strftime('%d.%m.%Y %H:%M') }}</p>
+<a class="btn btn-outline-primary" href="{{ url_for('posts.post_detail', post_id=post.id) }}">Переглянути</a></div></article></div>
+{% else %}<p>Публікацій поки немає.</p>{% endfor %}
+</div>{% endblock %}

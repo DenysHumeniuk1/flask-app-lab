@@ -1,10 +1,10 @@
 import unittest
-from app import app
+from app import create_app
 
 class ProductBlueprintTests(unittest.TestCase):
     def setUp(self):
-        app.config['TESTING'] = True
-        self.client = app.test_client()
+        self.app = create_app('testing')
+        self.client = self.app.test_client()
 
     def test_product_list(self):
         response = self.client.get('/products/')
