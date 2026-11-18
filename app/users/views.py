@@ -11,11 +11,10 @@ def admin():
     return redirect(url_for('users.greetings', name='administrator', age=45))
 
 
-# Лабораторна №4: автентифікація, сесії, кукі та теми.
 from flask import flash, session, make_response
 from datetime import datetime, timezone
 
-DEMO_USERS = {'student': 'lab4pass'}  # заглушка без БД (лише для навчання)
+DEMO_USERS = {'student': 'lab4pass'}
 COOKIE_PREFIX = 'lab4_'
 
 def authenticated():
@@ -94,7 +93,6 @@ def delete_all_cookies():
         flash('Увійдіть у систему.', 'warning')
         return redirect(url_for('users.login'))
     response = make_response(redirect(url_for('users.profile')))
-    # Видаляємо демонстраційні cookies, а також тему. Сесію не чіпаємо.
     for key in request.cookies:
         if key.startswith(COOKIE_PREFIX):
             response.delete_cookie(key)

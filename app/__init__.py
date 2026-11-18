@@ -24,6 +24,7 @@ def create_app(config_name=None):
     csrf.init_app(app)
 
     from . import models
+    from .products import models as product_models
     from .users import user_bp
     from .products import products_bp
     from .posts import post_bp
