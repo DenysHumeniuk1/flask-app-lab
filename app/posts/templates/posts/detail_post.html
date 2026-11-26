@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<article class="content-section">
+  <span class="badge bg-secondary">{{ post.category }}</span>
+  <h1 class="mt-2">{{ post.title }}</h1>
+  <p class="text-muted">Автор: {{ post.user.username }} ({{ post.user.email }}) | {{ post.posted.strftime('%d.%m.%Y %H:%M') }}</p>
+  <p class="post-content">{{ post.content }}</p>
+  <div class="post-tags mb-3">
+    <strong>Теги:</strong>
+    {% for tag in post.tags %}<span class="badge rounded-pill bg-info text-dark me-1">{{ tag.name }}</span>
+    {% else %}<span class="text-muted">Без тегів</span>{% endfor %}
+  </div>
+  <a class="btn btn-primary" href="{{ url_for('posts.update_post', post_id=post.id) }}">Редагувати</a>
+  <a class="btn btn-danger" href="{{ url_for('posts.delete_post', post_id=post.id) }}">Видалити</a>
+  <a class="btn btn-outline-secondary" href="{{ url_for('posts.post_list') }}">Назад</a>
+</article>
+{% endblock %}

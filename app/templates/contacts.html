@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import render_field %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-7">
+    <section class="content-section">
+      <h1 class="mb-2">Contact form</h1>
+      <p class="text-muted mb-4">Заповніть усі поля, щоб надіслати повідомлення.</p>
+      <form method="post" action="{{ url_for('contacts') }}" novalidate>
+        {{ form.hidden_tag() }}
+        {{ render_field(form.name) }}
+        {{ render_field(form.email) }}
+        {{ render_field(form.phone, placeholder='+380XXXXXXXXX') }}
+        {{ render_field(form.subject) }}
+        {{ render_field(form.message, rows=5, cols=40, maxlength=500) }}
+        {{ form.submit(class="btn btn-primary w-100") }}
+      </form>
+    </section>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import render_field %}
+{% block content %}
+<h1 class="mb-4">{{ heading }}</h1>
+<section class="content-section">
+  {% if has_authors %}
+  <form method="post">
+    {{ form.hidden_tag() }}
+    {{ render_field(form.title) }}
+    {{ render_field(form.content, rows=6) }}
+    {{ render_field(form.category) }}
+    {{ render_field(form.publish_date) }}
+    {{ render_field(form.author_id) }}
+    <div class="mb-3">
+      {{ form.tags.label(class="form-label") }}
+      {{ form.tags(class="form-select", multiple=true, size=4) }}
+      <div class="form-text">Для вибору кількох тегів утримуйте Ctrl.</div>
+      {% for error in form.tags.errors %}<div class="text-danger">{{ error }}</div>{% endfor %}
+    </div>
+    <div class="form-check mb-3">
+      {{ form.enabled(class="form-check-input") }}
+      {{ form.enabled.label(class="form-check-label") }}
+    </div>
+    {{ form.submit(class="btn btn-primary") }}
+    <a class="btn btn-outline-secondary" href="{{ url_for('posts.post_list') }}">Скасувати</a>
+  </form>
+  {% else %}
+  <p>Щоб створювати публікації, спочатку додайте користувачів у базу даних. Інструкція є у файлі README_LAB8.md.</p>
+  {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}<div class="content-section"><h1>Підтвердження видалення</h1>
+<p>Ви дійсно хочете видалити пост «{{ post.title }}»?</p>
+<form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<button class="btn btn-danger" type="submit">Підтвердити видалення</button>
+<a class="btn btn-outline-secondary" href="{{ url_for('posts.post_detail', post_id=post.id) }}">Скасувати</a></form></div>{% endblock %}
