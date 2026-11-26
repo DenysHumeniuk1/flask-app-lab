@@ -1,4 +1,3 @@
-
 from datetime import datetime
 
 from sqlalchemy import String, Text, DateTime, Enum, Boolean
